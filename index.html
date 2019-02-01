@@ -43,6 +43,7 @@
         h3 {
             margin: 10px;
             font-size: 5vw;
+            margin-bottom: 50px;
         }
 
 
@@ -92,23 +93,41 @@
                 return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
             };
 
-            var move = getUrlParameter('move');
-            if (move != "") {
-                $('#move').html(move);
-                $('#moveGoal').html(move);
+            var moveGoal = getUrlParameter('move');
+            if (moveGoal != "") {
+                $('#move').html(moveGoal);
+                $('#moveGoal').html(moveGoal);
             }
             
             function updateTotal(){
                 var movePoints = $('#movePoints').html();
                 var exercisePoints = $('#exercisePoints').html();
                 var standPoints = $('#standPoints').html();
-                // var total = $('#movePoints').html()+$('exercisePoints').html()+$('standPoints').html();
                 var total = parseInt(movePoints)+parseInt(exercisePoints)+parseInt(standPoints);
                 $('#total').html(total)
             }
             
-            updateTotal();
-
+            $('#move').click(function(){
+                var newMove = prompt("Enter a new number:");
+                $('#move').html(newMove);
+                $('#movePoints').html(Math.round(parseInt(newMove)/moveGoal*100));
+                updateTotal();
+            });
+            
+            $('#exercise').click(function(){
+                var newExercise = prompt("Enter a new number:");
+                $('#exercise').html(newExercise);
+                $('#exercisePoints').html(Math.round(parseInt(newExercise)*30/9));
+                updateTotal();
+            });
+            
+            $('#stand').click(function(){
+                var newStand = prompt("Enter a new number:");
+                $('#stand').html(newStand);
+                $('#standPoints').html(Math.round(parseInt(newStand)*100/12));
+                updateTotal();
+            });
+            
 
         });
     </script>
