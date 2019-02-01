@@ -98,12 +98,16 @@
                 $('#moveGoal').html(move);
             }
             
-            // function updateTotal(){
-            //     var total = $('#movePoints').html()+$('exercisePoints').html()+$('standPoints').html();
-            //     alert(total);
-            // }
+            function updateTotal(){
+                var movePoints = $('#movePoints').html();
+                var exercisePoints = $('#exercisePoints').html();
+                var standPoints = $('#standPoints').html();
+                // var total = $('#movePoints').html()+$('exercisePoints').html()+$('standPoints').html();
+                var total = parseInt(movePoints)+parseInt(exercisePoints)+parseInt(standPoints);
+                $('#total').html(total)
+            }
             
-            // updateTotal();
+            updateTotal();
 
 
         });
