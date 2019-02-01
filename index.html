@@ -4,14 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <title>title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
+        /*red move: #e70e36*/
+
+        /*green exercise: #5ee902*/
+
+        /*blue stand: #00cae2*/
+
+        /*bright yellow: #dcc277*/
+
+        /*faded yellow: #9e8f64*/
+
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            color: #dcc277;
+            font-size: 13.5vw;
+            text-align: center;
+        }
+
+
+        h2 {
+            font-weight: 900;
+            font-family: 'Roboto', sans-serif;
+            color: #dcc277;
+            font-size: 10vw;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            margin: 10px;
+            font-size: 5vw;
+        }
+
+
+        @media screen and (min-width: 992px) {
+            h1 {
+                font-size: 133.92px;
+            }
+            h2 {
+                font-size: 99.2px;
+            }
+            h3 {
+                font-size: 49.6px;
+            }
+        }
+        
+        .red {
+            color: #e70e36;
+        }
+        .green {
+            color: #5ee902;
+        }
+        .blue {
+            color: #00cae2;
+        }
     </style>
 </head>
 
 <body>
 
-    <h1></h1>
-    
+    <h1>Apple Watch</h1>
+    <h2>Point Calculator</h2>
+    <div class="container">
+        <h3 class="red">Move: <span id="move">500</span> / <span id="moveGoal">500</span> = <span id="movePoints">100</span> points</h3>
+        <h3 class="green">Exercise: <span id="exercise">30</span> / 30 = <span id="exercisePoints">100</span> points</h3>
+        <h3 class="blue">Stand: <span id="stand">12</span> / 12 = <span id="standPoints">100</span> points</h3>
+        <h3>Total: <span id="total">300</span> points</h3>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script>
         $(function() {
@@ -25,8 +93,19 @@
             };
 
             var move = getUrlParameter('move');
+            if (move != "") {
+                $('#move').html(move);
+                $('#moveGoal').html(move);
+            }
+            
+            // function updateTotal(){
+            //     var total = $('#movePoints').html()+$('exercisePoints').html()+$('standPoints').html();
+            //     alert(total);
+            // }
+            
+            // updateTotal();
 
-            $('h1').html(move);
+
         });
     </script>
 </body>
