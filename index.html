@@ -154,7 +154,10 @@
             };
 
             var moveGoal = getUrlParameter('move');
-            if (moveGoal != "") {
+            if (moveGoal == "") {
+                moveGoal = 500;
+            }
+            else {
                 $('#move').val(moveGoal);
                 $('#moveGoal').html(moveGoal);
             }
