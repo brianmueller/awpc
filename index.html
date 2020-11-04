@@ -109,6 +109,11 @@
             margin: 10px;
             margin-top: 40px;
         }
+
+        #ringsContainer {
+            margin: 0 auto;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -120,7 +125,7 @@
     <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-6">
+        <div class="col-lg-8">
 
             <!--<div class="container">-->
             <form autocomplete="false">
@@ -145,8 +150,8 @@
 
         </div>
 
-        <div class="col-lg-6">
-            <img src="https://www.apple.com/v/watch/close-your-rings/d/images/meta/og__bb3dc50gux7m.png?202009161110">
+        <div class="col-lg-4" id="ringsContainer">
+            <!--<img src="https://www.apple.com/v/watch/close-your-rings/d/images/meta/og__bb3dc50gux7m.png?202009161110">-->
         </div>
 
     </div> <!-- .row -->
@@ -230,17 +235,62 @@
                 $('#stand').val("");
             });
 
-            
-
-
-
-
-
-
-
 
 
         });
+    </script>
+    <script>
+    // p5js
+
+        var zero;
+        var one;
+
+        var moveRing, exerciseRing, standRing;
+        var moveSize, exerciseSize, standSize, centerSize;
+
+        function setup() {
+          var myCanvas = createCanvas(400, 400);
+          myCanvas.parent("ringsContainer");
+
+          zero = -1*PI/2;
+          one = 2*PI;
+          strokeWeight(5);
+
+          moveRing = 0.5;
+          exerciseRing = 0.25;
+          standRing = 0.75;
+
+          moveSize = 0.8;
+          exerciseSize = 0.6;
+          standSize = 0.4;
+          centerSize = 0.2;
+
+        }
+
+        function draw() {
+
+          moveRing = constrain(moveRing,0,1);
+          exerciseRing = constrain(exerciseRing,0,1);
+          standRing = constrain(standRing,0,1);
+
+          background(0);
+
+          fill("#e70e36");
+          arc(width/2,height/2,width*moveSize,width*moveSize,zero,zero+moveRing*one);
+
+          fill(0);
+          arc(width/2,height/2,width*exerciseSize,width*exerciseSize,zero,zero+one);
+          fill("#5ee902");
+          arc(width/2,height/2,width*exerciseSize,width*exerciseSize,zero,zero+exerciseRing*one);
+
+          fill(0);
+          arc(width/2,height/2,width*standSize,width*standSize,zero,zero+one);
+          fill("#00cae2");
+          arc(width/2,height/2,width*standSize,width*standSize,zero,zero+standRing*one);
+
+          fill(0);
+          arc(width/2,height/2,width*centerSize,width*centerSize,zero,zero+one);
+        }
     </script>
 </body>
 
