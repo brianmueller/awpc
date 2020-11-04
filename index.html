@@ -256,9 +256,9 @@
           one = 2*PI;
           strokeWeight(5);
 
-          moveRing = 0.5;
-          exerciseRing = 0.25;
-          standRing = 0.75;
+          moveRing = 0;
+          exerciseRing = 0;
+          standRing = 0;
 
           moveSize = 0.8;
           exerciseSize = 0.6;
@@ -268,6 +268,10 @@
         }
 
         function draw() {
+
+          moveRing = select("#movePoints").html()/100;
+          exerciseRing = select("#exercisePoints").html()/100;
+          standRing = select("#standPoints").html()/100;
 
           moveRing = constrain(moveRing,0,1);
           exerciseRing = constrain(exerciseRing,0,1);
